@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DEMO: Acceso al DOM con JS</title>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+    <header>
+        <h1>Acceso al <span>DOM</span> con JavaScript</h1>
+        <p class="subtitle">Explorando los métodos para acceder a elementos de una página web: getElementById, getElementsByClassName, getElementsByTagName, querySelector y querySelectorAll.</p>
+    </header>
+
+    <!-- Zona HTML de prueba -->
+    <div class="target-area" id="targetArea">
+        <h2 id="titulo">Bienvenidos a la Demo del DOM</h2>
+        <p class="descripcion">Este es un párrafo con clase "descripcion". Sirve como ejemplo para acceder por clase.</p>
+        <p class="descripcion">Segundo párrafo con clase "descripcion" para demostrar colecciones.</p>
+        <div class="elemento">Elemento 1 con clase "elemento"</div>
+        <div class="elemento">Elemento 2 con clase "elemento"</div>
+        <div class="elemento">Elemento 3 con clase "elemento"</div>
+        <ul>
+            <li>Item de lista 1</li>
+            <li>Item de lista 2</li>
+            <li>Item de lista 3</li>
+        </ul>
+    </div>
+
+    <!-- 1. Acceder por ID -->
+    <div class="demo-section s1">
+        <div class="section-header">
+            <div class="section-number">1</div>
+            <h3>Acceder por ID</h3>
+        </div>
+        <p class="explanation"><strong>getElementById()</strong> selecciona un solo elemento del DOM usando su atributo <strong>id</strong>. Devuelve el elemento directamente (no una colección).</p>
+        <div class="code-block">
+            <div class="code-header">
+                <span class="code-label">javascript</span>
+                <button class="run-btn" onclick="runDemo1()">Ejecutar</button>
+            </div>
+            <pre><span class="kw">const</span> <span class="var">titulo</span> = document.<span class="method">getElementById</span>(<span class="str">"titulo"</span>);
+console.<span class="fn">log</span>(<span class="var">titulo</span>.<span class="prop">innerText</span>);</pre>
+        </div>
+        <div class="console-output">
+            <div class="console-header"><div class="console-dot"></div><span>consola</span></div>
+            <div class="console-body" id="output1">Haz clic en "Ejecutar" para ver el resultado...</div>
+        </div>
+    </div>
+
+    <!-- 2. Acceder por clase -->
+    <div class="demo-section s2">
+        <div class="section-header">
+            <div class="section-number">2</div>
+            <h3>Acceder por clase</h3>
+        </div>
+        <p class="explanation"><strong>getElementsByClassName()</strong> devuelve una <strong>colección</strong> (HTMLCollection) de todos los elementos que tienen la clase indicada. Se accede a cada uno por índice.</p>
+        <div class="code-block">
+            <div class="code-header">
+                <span class="code-label">javascript</span>
+                <button class="run-btn" onclick="runDemo2()">Ejecutar</button>
+            </div>
+            <pre><span class="kw">const</span> <span class="var">parrafos</span> = document.<span class="method">getElementsByClassName</span>(<span class="str">"descripcion"</span>);
+console.<span class="fn">log</span>(<span class="var">parrafos</span>[<span class="str">0</span>].<span class="prop">innerText</span>);</pre>
+        </div>
+        <div class="console-output">
+            <div class="console-header"><div class="console-dot"></div><span>consola</span></div>
+            <div class="console-body" id="output2">Haz clic en "Ejecutar" para ver el resultado...</div>
+        </div>
+    </div>
+
+    <!-- 3. Acceder por etiqueta -->
+    <div class="demo-section s3">
+        <div class="section-header">
+            <div class="section-number">3</div>
+            <h3>Acceder por etiqueta</h3>
+        </div>
+        <p class="explanation"><strong>getElementsByTagName()</strong> selecciona todos los elementos de un tipo específico de etiqueta HTML y devuelve una HTMLCollection.</p>
+        <div class="code-block">
+            <div class="code-header">
+                <span class="code-label">javascript</span>
+                <button class="run-btn" onclick="runDemo3()">Ejecutar</button>
+            </div>
+            <pre><span class="kw">const</span> <span class="var">items</span> = document.<span class="method">getElementsByTagName</span>(<span class="str">"li"</span>);
+console.<span class="fn">log</span>(<span class="var">items</span>[<span class="str">0</span>].<span class="prop">innerText</span>);</pre>
+        </div>
+        <div class="console-output">
+            <div class="console-header"><div class="console-dot"></div><span>consola</span></div>
+            <div class="console-body" id="output3">Haz clic en "Ejecutar" para ver el resultado...</div>
+        </div>
+    </div>
+
+    <!-- 4. Acceder con querySelector -->
+    <div class="demo-section s4">
+        <div class="section-header">
+            <div class="section-number">4</div>
+            <h3>Acceder con querySelector()</h3>
+        </div>
+        <p class="explanation"><strong>querySelector()</strong> selecciona el <strong>primer elemento</strong> que coincida con un selector CSS. Acepta selectores de clase (.), id (#), etiqueta, etc.</p>
+        <div class="code-block">
+            <div class="code-header">
+                <span class="code-label">javascript</span>
+                <button class="run-btn" onclick="runDemo4()">Ejecutar</button>
+            </div>
+            <pre><span class="kw">const</span> <span class="var">primerElemento</span> = document.<span class="method">querySelector</span>(<span class="str">".elemento"</span>);
+console.<span class="fn">log</span>(<span class="var">primerElemento</span>.<span class="prop">innerText</span>);</pre>
+        </div>
+        <div class="console-output">
+            <div class="console-header"><div class="console-dot"></div><span>consola</span></div>
+            <div class="console-body" id="output4">Haz clic en "Ejecutar" para ver el resultado...</div>
+        </div>
+    </div>
+
+    <!-- 5. Acceder con querySelectorAll -->
+    <div class="demo-section s5">
+        <div class="section-header">
+            <div class="section-number">5</div>
+            <h3>Acceder con querySelectorAll()</h3>
+        </div>
+        <p class="explanation"><strong>querySelectorAll()</strong> devuelve una <strong>NodeList</strong> con todos los elementos que coincidan con el selector CSS. Se puede recorrer con <strong>forEach</strong>.</p>
+        <div class="code-block">
+            <div class="code-header">
+                <span class="code-label">javascript</span>
+                <button class="run-btn" onclick="runDemo5()">Ejecutar</button>
+            </div>
+            <pre><span class="kw">const</span> <span class="var">elementos</span> = document.<span class="method">querySelectorAll</span>(<span class="str">".elemento"</span>);
+<span class="var">elementos</span>.<span class="fn">forEach</span>(<span class="var">el</span> => console.<span class="fn">log</span>(<span class="var">el</span>.<span class="prop">innerText</span>));</pre>
+        </div>
+        <div class="console-output">
+            <div class="console-header"><div class="console-dot"></div><span>consola</span></div>
+            <div class="console-body" id="output5">Haz clic en "Ejecutar" para ver el resultado...</div>
+        </div>
+    </div>
+</div>
+
+
+
+    <script src="script.js"></script>
+</body>
+</html>
