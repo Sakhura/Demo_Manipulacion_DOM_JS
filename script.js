@@ -1,20 +1,21 @@
 function showOutput(outputId, lines){
-    const output = document.getElementById(outputId);
-    output.classList.add('active');
-    output.innerHTML = '';
+    const output = document.getElementById(outputId);// busca contenedor de ID= X
+    output.classList.add('active'); // activa el css
+    output.innerHTML = ''; //limpiar el contenido anterior
+    //recorrer el arreglo
     lines.forEach((lines,i) => {
-        const div = document.createElement('div');
-        div.className = 'log-line';
-        div.style.animationDelay =`${i * 0.1}s`;
-        div.innerHTML =`<span class="chevron">)</span> ${lines}`;
-        output.appendChild(div);
+        const div = document.createElement('div'); //crea div de manera dinamica
+        div.className = 'log-line'; // asigno una clase css
+        div.style.animationDelay =`${i * 0.1}s`; // animacion progresiva
+        div.innerHTML =`<span class="chevron">=</span> ${lines}`; //inserta el texto dentro del div
+        output.appendChild(div); // agrega un nuevo contenedor 
     });
 }
 
-function flashElement(el){
-    el.classList.remove('highligth-flash');
-    void el.offsetWidth;
-    el.classList.add('highligth-flash');
+function flashElement(el){ // recibe el elemento html
+    el.classList.remove('highligth-flash'); //quita la clase
+    void el.offsetWidth; // forzar reflow 
+    el.classList.add('highligth-flash'); // agrega clases 
 
 }
 
